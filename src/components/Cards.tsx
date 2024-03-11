@@ -20,10 +20,7 @@ export default function Cards({ title, description, stack, githubLink }: CardsPr
     
     return (
         <div
-            style={{
-                boxShadow: '0 0 0 1px rgba(82, 64, 156, 1)'
-            }}
-            className="bg-[#33255b] rounded-xl p-6 text-white space-y-4 max-w-[300px] transition duration-300 hover:bg-[#291f43] cursor-pointer"
+            className="cardsShadow bg-[#33255b] rounded-xl p-6 text-white space-y-4 max-w-[300px] transition duration-300 hover:bg-[#291f43] cursor-pointer"
             onClick={handleCardClick}
             >
             <h2 className="text-xl font-semibold text-white">{title}</h2>
@@ -31,7 +28,7 @@ export default function Cards({ title, description, stack, githubLink }: CardsPr
             <div className="flex flex-wrap gap-2">
                 {stack.map((tech, index) => (
                     <div key={index} className='flex flex-row items-center space-x-2 bg-[#c4b4ff] rounded-xl px-3 h-6 hover:bg-[#aa93ff]'>
-                        <Image src={tech.icon} alt={`${tech.name} Icon`} width={16} height={16}/>
+                        <Image src={tech.icon} alt={`${tech.name} Icon`} width={16} height={16} className="w-auto h-4"/>
                         <p className="text-sm text-black">{tech.name}</p>
                     </div>
                 ))}

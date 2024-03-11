@@ -40,22 +40,22 @@ export default function Header() {
                         <h2 className='text-[1.5rem] lg:text-[2.5rem] description opacity-0'>I&apos;m a <span style={{ fontWeight: 600 }}>Software Engineer</span> bridging the gap between complex coding challenges and creative problem-solving.</h2>
                         <div className="gap-4 mt-6 buttons flex flex-wrap">
                             <button className="rounded-xl bg-[#4521d5] p-2 text-[#e2ddfe] hover:bg-[#3516b0] opacity-0 flex gap-3 items-center">
-                                <Image src="/github.svg" alt="github" width={16} height={16} />
+                                <Image src="/github.svg" alt="github" width={16} height={16} className="w-auto h-4"/>
                                 Github
                             </button>
                             <button className="rounded-xl bg-[#4521d5]  p-2 text-[#e2ddfe] hover:bg-[#3516b0] opacity-0 flex gap-3 items-center">
-                                <Image src="/linkedin.svg" alt="github" width={16} height={16} />
+                                <Image src="/linkedin.svg" alt="github" width={16} height={16} className="w-auto h-4"/>
                                 Linkedin
                             </button>
                             <button className="rounded-xl bg-[#4521d5]  p-2 text-[#e2ddfe] hover:bg-[#3516b0] opacity-0 flex gap-3 items-center">
-                                <Image src="/mail.svg" alt="github" width={16} height={16} />
+                                <Image src="/mail.svg" alt="github" width={16} height={16} className="w-auto h-4"/>
                                 lamazereg@gmail.com
                             </button>
                         </div>
                     </div>
                     <div className="pt-10 lg:pt-[100px]">
                         <div className="w-40 h-40 lg:w-60 lg:h-60 rounded-full overflow-hidden relative photo opacity-0">
-                            <Image src="/photo.jpg" alt="profil" width={400} height={400} className="absolute bottom-15 left-0 w-full h-auto" />
+                            <Image src="/photo.jpg" alt="profil" width={400} height={400} priority={true} className="absolute bottom-15 left-0 w-full h-auto" />
                         </div>
                     </div>
                 </div>

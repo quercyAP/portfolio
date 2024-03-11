@@ -43,6 +43,10 @@ h2 {
   color: #e2ddfe;
 }
 
+.cardsShadow {
+  box-shadow: 0 0 0 1px rgba(82, 64, 156, 1);
+}
+
 @layer utilities {
   .text-balance {
     text-wrap: balance;

@@ -31,13 +31,13 @@ export default function Skills() {
     return (
         <div className="flex justify-center items-center flex-col mb-20 lg:mb-[200px]">
             <h2 className="text-[2rem] lg:text-[2.5rem] font-[1000] title opacity-0">Skills</h2>
-            <div className="flex gap-5 lg:gap-[5rem] m-10 buttons2 flex-wrap">
-                <Image src="/C++.png" alt="Icon" width={50} height={50} className="opacity-0"/>
-                <Image src="/c-sharp.svg" alt="Icon1" width={50} height={50} className="opacity-0"/>
-                <Image src="/unity.svg" alt="Icon2" width={50} height={50} className="opacity-0"/>
-                <Image src="/next-js.svg" alt="Icon3" width={50} height={50} className="opacity-0"/>
-                <Image src="/nestjs.png" alt="Icon4" width={50} height={50} className="opacity-0"/>
-                <Image src="/docker.svg" alt="Icon5" width={50} height={50} className="opacity-0"/>
+            <div className="flex gap-5 lg:gap-[5rem] lg:m-10 buttons2 flex-wrap justify-center mt-4">
+                <Image src="/C++.png" alt="Icon" width={50} height={50} className="opacity-0 w-auto h-16"/>
+                <Image src="/c-sharp.svg" alt="Icon1" width={50} height={50} className="opacity-0 w-auto h-16"/>
+                <Image src="/unity.svg" alt="Icon2" width={50} height={50} className="opacity-0 w-auto h-16"/>
+                <Image src="/next-js.svg" alt="Icon3" width={50} height={50} className="opacity-0 w-auto h-16"/>
+                <Image src="/nestjs.png" alt="Icon4" width={50} height={50} className="opacity-0 w-auto h-16"/>
+                <Image src="/docker.svg" alt="Icon5" width={50} height={50} className="opacity-0 w-auto h-16"/>
             </div>
         </div>
     )

@@ -5,7 +5,6 @@ import { EffectComposer, DepthOfField } from '@react-three/postprocessing';
 import { Sphere } from '@react-three/drei';
 import { ShaderMaterial, Mesh } from 'three';
 import * as THREE from 'three';
-import { div } from 'three/examples/jsm/nodes/Nodes.js';
 
 function MovingSphere({ position, speed, size }: { position: [number, number, number], speed: number, size: number }) {
     const sphereRef = useRef<Mesh | null>(null);
@@ -58,7 +57,7 @@ function MovingSphere({ position, speed, size }: { position: [number, number, nu
 
 export default function ThreeCanvas() {
     return (
-        <Canvas style={{ height: '100vh', zIndex: '0', position: 'absolute'}} camera={{ position: [0, 0, 20], fov: 60 }}>
+        <Canvas style={{ height: '100vh', zIndex: '0', position: 'absolute'}} className="h-full z-0 absolute" camera={{ position: [0, 0, 20], fov: 60 }}>
             <EffectComposer>
                 <DepthOfField target={[0, 0, 20]} focalLength={0.001} bokehScale={15} height={480} />
             </EffectComposer>
