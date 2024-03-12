@@ -2,7 +2,6 @@
 import Cards from './Cards';
 import { useEffect } from 'react';
 import gsap from 'gsap';
-import ScrollTrigger from 'gsap/ScrollTrigger';
 
 const projectData = [
     {
@@ -14,13 +13,13 @@ const projectData = [
             { name: 'Docker', icon: '/docker.svg' },
             { name: 'Postgres', icon: '/postgresql.svg' },
         ],
-        githubLink: ''
+        githubLink: 'https://42transcendance.fr/'
     },
     {
         title: 'WebServer',
         description: 'Non-blocking HTTP web server, configurable via an NGINX-like configuration file, with CGI functionality.',
         stack: [
-            { name: 'C++', icon: '/c++.png' },
+            { name: 'C++', icon: '/C++.png' },
         ],
         githubLink: 'https://github.com/quercyAP/WebServ'
     },
@@ -30,11 +29,9 @@ const projectData = [
         stack: [
             { name: 'C', icon: '/c.svg' },
         ],
-        githubLink: ''
+        githubLink: 'https://github.com/quercyAP/MiniRT'
     },
 ];
-
-gsap.registerPlugin(ScrollTrigger);
 
 export default function Projects() {
     useEffect(() => {

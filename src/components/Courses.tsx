@@ -2,7 +2,6 @@
 import Cards from './Cards';
 import { useEffect } from 'react';
 import gsap from 'gsap';
-import ScrollTrigger from 'gsap/ScrollTrigger';
 
 const projectData = [
     {
@@ -13,7 +12,7 @@ const projectData = [
             { name: 'NestJS', icon: '/nestjs.png' },
             { name: 'Docker', icon: '/docker.svg' },
             { name: 'Postgres', icon: '/postgresql.svg' },
-            { name: 'C++', icon: '/c++.png' },
+            { name: 'C++', icon: '/C++.png' },
             { name: 'C', icon: '/c.svg' },
         ],
         githubLink: 'https://github.com/quercyAP/42-cursus'
@@ -28,8 +27,6 @@ const projectData = [
         githubLink: 'https://github.com/quercyAP/UnityCourses'
     },
 ];
-
-gsap.registerPlugin(ScrollTrigger);
 
 export default function Courses() {
     useEffect(() => {

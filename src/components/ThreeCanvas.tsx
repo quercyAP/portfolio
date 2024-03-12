@@ -16,7 +16,6 @@ function MovingSphere({ position, speed, size }: { position: [number, number, nu
     void main() {
       vUv = uv;
 
-      // Déformation basée sur le temps et la position
       vec3 deformPosition = position + vec3(5.0, cos(position.x * 3.0 + time) * 0.2, 2.0);
       gl_Position = projectionMatrix * modelViewMatrix * vec4(deformPosition, 1.0);
     }
