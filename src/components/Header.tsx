@@ -50,7 +50,10 @@ export default function Header() {
                                 <Image src="/linkedin.svg" alt="github" width={16} height={16} className="w-auto h-4"/>
                                 Linkedin
                             </button>
-                            <button className="rounded-xl bg-[#4521d5]  p-2 text-[#e2ddfe] hover:bg-[#3516b0] opacity-0 flex gap-3 items-center">
+                            <button 
+                                className="rounded-xl bg-[#4521d5]  p-2 text-[#e2ddfe] hover:bg-[#3516b0] opacity-0 flex gap-3 items-center"
+                                onClick={() => window.open('mailto:lamazereg@gmail.com', '_blank')}
+                            >
                                 <Image src="/mail.svg" alt="github" width={16} height={16} className="w-auto h-4"/>
                                 lamazereg@gmail.com
                             </button>
