@@ -1,14 +1,32 @@
 'use client';
 import { Canvas, useFrame } from '@react-three/fiber';
+import { Bloom, DepthOfField, Select, Selection, EffectComposer, Noise, Vignette, Outline, SelectiveBloom } from '@react-three/postprocessing'
 import { Suspense, useRef, useMemo } from 'react';
-import { EffectComposer, DepthOfField } from '@react-three/postprocessing';
 import { Sphere } from '@react-three/drei';
 import { ShaderMaterial, Mesh } from 'three';
 import * as THREE from 'three';
 
-function MovingSphere({ position, speed, size }: { position: [number, number, number], speed: number, size: number }) {
+function MovingSphere({ position, speed, size, material }:
+    { position: [number, number, number], speed: number, size: number, material: ShaderMaterial }) {
     const sphereRef = useRef<Mesh | null>(null);
 
+    useFrame((state, delta) => {
+        if (!sphereRef.current) return;
+        sphereRef.current.rotation.y += speed;
+        sphereRef.current.position.x += Math.sin(sphereRef.current.rotation.y) * speed;
+        sphereRef.current.position.z += Math.cos(sphereRef.current.rotation.y) * speed;
+        sphereRef.current.position.y += Math.sin(sphereRef.current.rotation.y) * speed;
+        material.uniforms.time.value += delta * Math.random() * 0.2;
+    });
+
+    return (
+        <Sphere ref={sphereRef} args={[size, 500, 100]} position={position}>
+            <primitive attach="material" object={material} />
+        </Sphere>
+    );
+}
+
+export default function ThreeCanvas() {
     const vertexShader = `
     varying vec2 vUv;
     uniform float time;
@@ -16,7 +34,7 @@ function MovingSphere({ position, speed, size }: { position: [number, number, nu
     void main() {
       vUv = uv;
 
-      vec3 deformPosition = position + vec3(5.0, cos(position.x * 3.0 + time) * 0.2, 2.0);
+      vec3 deformPosition = position + vec3(2.0, cos(position.x * 3.0 + time) * 0.2, 2.0);
       gl_Position = projectionMatrix * modelViewMatrix * vec4(deformPosition, 1.0);
     }
   `;
@@ -36,34 +54,21 @@ function MovingSphere({ position, speed, size }: { position: [number, number, nu
             time: { value: 0 },
             color: { value: new THREE.Color(9 / 255, 7 / 255, 17 / 255) },
         },
-    }), []);
-
-    useFrame((state, delta) => {
-        if (!sphereRef.current) return;
-        sphereRef.current.rotation.y += speed;
-        sphereRef.current.position.x += Math.sin(sphereRef.current.rotation.y) * speed;
-        sphereRef.current.position.z += Math.cos(sphereRef.current.rotation.y) * speed;
-        sphereRef.current.position.y += Math.sin(sphereRef.current.rotation.y) * speed;
-        shaderMaterial.uniforms.time.value += delta * Math.random() * 3;
-    });
+    }), [fragmentShader, vertexShader]);
 
     return (
-        <Sphere ref={sphereRef} args={[size, 32, size]} position={position}>
-            <primitive attach="material" object={shaderMaterial} />
-        </Sphere>
-    );
-}
-
-export default function ThreeCanvas() {
-    return (
-        <Canvas style={{ height: '100vh', zIndex: '0', position: 'absolute'}} className="h-full z-0 absolute" camera={{ position: [0, 0, 20], fov: 60 }}>
-            <EffectComposer>
-                <DepthOfField target={[0, 0, 20]} focalLength={0.001} bokehScale={15} height={480} />
+        <Canvas style={{ height: '100vh', zIndex: '0', position: 'absolute' }} className="h-full z-0 absolute" camera={{ position: [0, 0, 20], fov: 60 }}>
+            <EffectComposer 
+                multisampling={0}
+                resolutionScale={0.5}
+            >
+                <Vignette eskil={false} offset={0.4} darkness={1} />
+                <Noise opacity={0.05} />
             </EffectComposer>
             <ambientLight intensity={0.1} />
             <Suspense fallback={null}>
                 {[...Array(15)].map((_, index) => {
-                    const size = Math.random() * 0.5 + 0.5;
+                    const size = Math.random() * 3 + 0.5;
                     return (
                         <MovingSphere
                             key={index}
@@ -74,6 +79,7 @@ export default function ThreeCanvas() {
                             ]}
                             speed={Math.random() * 0.005}
                             size={size}
+                            material={shaderMaterial}
                         />
                     );
                 })}
