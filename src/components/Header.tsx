@@ -61,7 +61,7 @@ export default function Header() {
                     </div>
                     <div className="pt-10 lg:pt-[100px]">
                         <div className="w-40 h-40 lg:w-60 lg:h-60 rounded-full overflow-hidden relative photo opacity-0">
-                            <Image src="/photo.jpg" alt="profil" width={400} height={400} priority={true} className="absolute bottom-15 left-0 w-full h-auto" />
+                            <Image src="/moi.png" alt="profil" width={400} height={400} priority={true} className="absolute bottom-15 left-0 w-full h-auto" />
                         </div>
                     </div>
                 </div>
