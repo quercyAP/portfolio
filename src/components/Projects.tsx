@@ -24,12 +24,20 @@ const projectData = [
         githubLink: 'https://github.com/quercyAP/WebServ'
     },
     {
-        title: 'MiniRT',
-        description: 'Creating 3D scene through ray tracing representing illuminated scenes composed of simple geometric objects (planes, spheres, cylinders), with handling of transformations and lighting.',
+        title: 'Scop',
+        description: "Interactive 3D visualization application in C++ and OpenGL, enabling model manipulation and texture application with intuitive camera and object controls.",
         stack: [
-            { name: 'C', icon: '/c.svg' },
+            { name: 'C++', icon: '/C++.png' },
         ],
-        githubLink: 'https://github.com/quercyAP/MiniRT'
+        githubLink: 'https://github.com/quercyAP/Scop2'
+    },
+    {
+        title: 'Linear Regression',
+        description: "Machine learning project implementing simple linear regression to predict car prices based on mileage, including a prediction program and a model training component with visualization and precision calculation bonuses.",
+        stack: [
+            { name: 'Python', icon: '/python.svg' },
+        ],
+        githubLink: 'https://github.com/quercyAP/LinearRegrresion'
     },
 ];
 
@@ -70,6 +78,7 @@ export default function Projects() {
                     </div>
                 ))}
             </div>
+            
         </div>
     );
 }
